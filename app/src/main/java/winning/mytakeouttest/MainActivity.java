@@ -3,20 +3,20 @@ package winning.mytakeouttest;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 
+import winning.mytakeouttest.base.BaseActivity;
 import winning.mytakeouttest.databinding.ActivityMainBinding;
 import winning.mytakeouttest.fragments.HomeFragment;
 import winning.mytakeouttest.fragments.MeFragment;
 import winning.mytakeouttest.fragments.MoreFragment;
 import winning.mytakeouttest.fragments.OrderFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding = null;
 
     //用来存放主界面的Fragemnt
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //初始化布局
         initViews();
     }
+
 
     private void initDatas() {
         fragments = new ArrayList<>();
