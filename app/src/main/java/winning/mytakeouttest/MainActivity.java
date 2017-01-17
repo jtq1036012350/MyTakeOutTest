@@ -16,6 +16,9 @@ import winning.mytakeouttest.fragments.MeFragment;
 import winning.mytakeouttest.fragments.MoreFragment;
 import winning.mytakeouttest.fragments.OrderFragment;
 
+/**
+ * 主界面Activity
+ */
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding = null;
 
