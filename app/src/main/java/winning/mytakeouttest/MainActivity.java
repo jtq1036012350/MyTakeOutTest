@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import winning.mytakeouttest.base.BaseActivity;
 import winning.mytakeouttest.databinding.ActivityMainBinding;
 import winning.mytakeouttest.fragments.HomeFragment;
-import winning.mytakeouttest.fragments.MeFragment;
+import winning.mytakeouttest.fragments.UserFragment;
 import winning.mytakeouttest.fragments.MoreFragment;
 import winning.mytakeouttest.fragments.OrderFragment;
 
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
         //添加Fragnment
         fragments.add(new HomeFragment());
         fragments.add(new OrderFragment());
-        fragments.add(new MeFragment());
+        fragments.add(new UserFragment());
         fragments.add(new MoreFragment());
 
         changeFragments(0);
