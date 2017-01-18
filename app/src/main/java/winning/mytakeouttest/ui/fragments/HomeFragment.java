@@ -52,7 +52,7 @@ public class HomeFragment extends BaseFragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 sumY += dy;
-                LogUtil.d("infotest",sumY / duration+"");
+                LogUtil.d("infotest", sumY / duration + "");
                 argbEvaluator = new ArgbEvaluator();
                 int bgColor = 0x553190E8;
                 if (sumY < 0) {
