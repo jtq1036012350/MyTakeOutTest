@@ -1,10 +1,10 @@
-package winning.mytakeouttest.ui.fragments;
+package winning.mytakeouttest.ui.base;
 
 import android.support.v4.app.Fragment;
 
 
 /**
- * Description: (这里用一句话描述这个类的作用)
+ * Description: Fragment的基类
  * Author: Jiang
  * Date:   2017/1/17
  */
