@@ -1,4 +1,4 @@
-package winning.mytakeouttest.base;
+package winning.mytakeouttest.ui.base;
 
 import android.content.Intent;
 import android.os.Bundle;

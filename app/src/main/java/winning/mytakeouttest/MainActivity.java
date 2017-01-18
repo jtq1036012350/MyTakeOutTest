@@ -9,12 +9,12 @@ import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 
-import winning.mytakeouttest.base.BaseActivity;
+import winning.mytakeouttest.ui.base.BaseActivity;
 import winning.mytakeouttest.databinding.ActivityMainBinding;
-import winning.mytakeouttest.fragments.HomeFragment;
-import winning.mytakeouttest.fragments.UserFragment;
-import winning.mytakeouttest.fragments.MoreFragment;
-import winning.mytakeouttest.fragments.OrderFragment;
+import winning.mytakeouttest.ui.fragments.HomeFragment;
+import winning.mytakeouttest.ui.fragments.UserFragment;
+import winning.mytakeouttest.ui.fragments.MoreFragment;
+import winning.mytakeouttest.ui.fragments.OrderFragment;
 
 /**
  * 主界面Activity
