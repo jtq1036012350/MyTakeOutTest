@@ -14,6 +14,8 @@ import winning.mytakeout.presenter.BasePresenter;
  */
 public class HomeFragmentPresenter extends BasePresenter {
 
+    private Call<ResponseInfo> call;
+
     @Override
     protected void failed(String msg) {
 
@@ -26,7 +28,7 @@ public class HomeFragmentPresenter extends BasePresenter {
 
     //获取数据：
     public void getData() {
-        Call<ResponseInfo> call = responseInfoAPI.home();
+        Call<ResponseInfo> call =  responseInfoAPI.home();
         call.enqueue(new Callback<ResponseInfo>() {
             @Override
             public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
