@@ -24,11 +24,11 @@ import winning.mytakeouttest.utils.LogUtil;
  */
 public class HomeFragment extends BaseFragment {
     private FragmentHomeBinding binding;
-    //当前滑动距离
+    //当前滑动的总距离
     private int sumY = 0;
-
+    //滑动渐变的临界值
     private float duration = 150.0f;
-
+    //颜色的计算器
     private ArgbEvaluator argbEvaluator;
 
     @Nullable
