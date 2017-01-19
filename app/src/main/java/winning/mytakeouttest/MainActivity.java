@@ -3,18 +3,20 @@ package winning.mytakeouttest;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import winning.mytakeouttest.ui.base.BaseActivity;
 import winning.mytakeouttest.databinding.ActivityMainBinding;
+import winning.mytakeouttest.ui.base.BaseActivity;
 import winning.mytakeouttest.ui.fragments.HomeFragment;
-import winning.mytakeouttest.ui.fragments.UserFragment;
 import winning.mytakeouttest.ui.fragments.MoreFragment;
 import winning.mytakeouttest.ui.fragments.OrderFragment;
+import winning.mytakeouttest.ui.fragments.UserFragment;
 
 /**
  * 主界面Activity
@@ -106,6 +108,22 @@ public class MainActivity extends BaseActivity {
                 setEnable(((ViewGroup) item).getChildAt(i), b);
             }
         }
+    }
+    private long mExitTime;
+    //按下两次返回键退出应用
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Object mHelperUtils;
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+
+            } else {
+                finishMyActivity();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 
