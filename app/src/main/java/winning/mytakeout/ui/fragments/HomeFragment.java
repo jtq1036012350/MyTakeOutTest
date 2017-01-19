@@ -19,6 +19,7 @@ import winning.mytakeout.presenter.fragment.HomeFragmentPresenter;
 import winning.mytakeout.ui.adapter.HomeRecycleViewAdapter;
 import winning.mytakeout.ui.base.BaseFragment;
 import winning.mytakeout.utils.LogUtil;
+import winning.mytakeout.utils.ToastUtil;
 import winning.mytakeouttest.R;
 import winning.mytakeouttest.databinding.FragmentHomeBinding;
 
@@ -40,13 +41,15 @@ public class HomeFragment extends BaseFragment {
     @Inject
     HomeFragmentPresenter homeFragmentPresenter;
 
+    private HomeRecycleViewAdapter homeRecycleViewAdapter;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         DaggerHomeFragmentComponent.Builder builder = DaggerHomeFragmentComponent
                 .builder();
-        builder.homeFragmentModule(new HomeFragmentModule());
+        builder.homeFragmentModule(new HomeFragmentModule(this));
         HomeFragmentComponent component = builder.build();
         component.in(this);
     }
@@ -54,7 +57,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-
         homeFragmentPresenter.getData();
         // 显示滚动条
     }
@@ -70,7 +72,8 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.homeRecycleview.setAdapter(new HomeRecycleViewAdapter());
+        homeRecycleViewAdapter = new HomeRecycleViewAdapter();
+        binding.homeRecycleview.setAdapter(homeRecycleViewAdapter);
         binding.homeRecycleview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
         //RecycleView的滑动监听(用来处理顶部栏的透明度)
@@ -93,5 +96,13 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
+    }
+
+    public void failed(String data) {
+        ToastUtil.showText(getContext(), data);
+    }
+
+    public HomeRecycleViewAdapter getAdapter() {
+        return homeRecycleViewAdapter;
     }
 }

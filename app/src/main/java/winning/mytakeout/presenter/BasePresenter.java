@@ -16,6 +16,7 @@ import winning.mytakeout.utils.ErrorInfo;
  */
 
 public abstract class BasePresenter {
+
     protected static ResponseInfoAPI responseInfoAPI;
     // 数据库
     // 网络
@@ -32,7 +33,7 @@ public abstract class BasePresenter {
 
 
         // 第一次初始化完成后，所有子类都可以使用
-        if(responseInfoAPI==null) {
+        if (responseInfoAPI == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constant.BASEURL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -45,7 +46,7 @@ public abstract class BasePresenter {
 
     }
 
-    public class CallbackAdapter implements Callback<ResponseInfo>{
+    public class CallbackAdapter implements Callback<ResponseInfo> {
 
         @Override
         public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
@@ -53,10 +54,10 @@ public abstract class BasePresenter {
             if (response != null && response.isSuccessful()) {
                 ResponseInfo info = response.body();
 
-                if("0".equals(info.code)){
+                if ("0".equals(info.code)) {
                     // 服务器端处理成功，并返回目标数据
                     parserData(info.data);
-                }else{
+                } else {
                     // 服务器端处理成功，返回错误提示，该信息需要展示给用户
                     // 依据code值获取到失败的数据
                     String msg = ErrorInfo.INFO.get(info.code);
@@ -73,17 +74,20 @@ public abstract class BasePresenter {
         @Override
         public void onFailure(Call<ResponseInfo> call, Throwable t) {
             // 联网过程中的异常
+            failed(t.toString());
         }
     }
 
     /**
      * 错误处理
+     *
      * @param msg
      */
     protected abstract void failed(String msg);
 
     /**
      * 解析服务器回复数据
+     *
      * @param data
      */
     protected abstract void parserData(String data);

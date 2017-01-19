@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import winning.mytakeout.model.net.bean.HomeInfo;
 import winning.mytakeouttest.R;
 
 /**
@@ -28,6 +29,10 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public int getItemCount() {
         return 50;
+    }
+
+    public void success(HomeInfo info) {
+
     }
 
     class CommonViewHolder extends RecyclerView.ViewHolder {
