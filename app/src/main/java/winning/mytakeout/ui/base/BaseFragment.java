@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.base;
+package winning.mytakeout.ui.base;
 
 import android.support.v4.app.Fragment;
 

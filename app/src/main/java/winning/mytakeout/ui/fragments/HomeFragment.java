@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.fragments;
+package winning.mytakeout.ui.fragments;
 
 import android.animation.ArgbEvaluator;
 import android.databinding.DataBindingUtil;
@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import winning.mytakeout.ui.adapter.HomeRecycleViewAdapter;
+import winning.mytakeout.ui.base.BaseFragment;
+import winning.mytakeout.utils.LogUtil;
 import winning.mytakeouttest.R;
 import winning.mytakeouttest.databinding.FragmentHomeBinding;
-import winning.mytakeouttest.ui.adapter.HomeRecycleViewAdapter;
-import winning.mytakeouttest.ui.base.BaseFragment;
-import winning.mytakeouttest.utils.LogUtil;
 
 
 /**

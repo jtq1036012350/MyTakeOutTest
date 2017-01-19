@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.fragments;
+package winning.mytakeout.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import winning.mytakeouttest.R;
-import winning.mytakeouttest.ui.base.BaseFragment;
+import winning.mytakeout.ui.base.BaseFragment;
 
 
 /**

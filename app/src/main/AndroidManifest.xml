@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="winning.mytakeout.MainActivity"
             android:label="主页面">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

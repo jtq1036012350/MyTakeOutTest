@@ -1,9 +1,9 @@
-package winning.mytakeouttest.utils;
+package winning.mytakeout.utils;
 
 /**
  * Created by Teacher on 2016/9/2.
  */
-public interface ConstantUtils {
+public interface Constant {
     // http://localhost:8080/   TakeoutService    /login?username="itheima"&password="bj"
 
     String BASEURL="http://192.168.10.19:8080/";
@@ -22,6 +22,6 @@ public interface ConstantUtils {
     // 短信登陆的分类值
     int LOGIN_TYPE_SMS=2;
 
-
+    public static final int FORRESULT = 100;
 
 }

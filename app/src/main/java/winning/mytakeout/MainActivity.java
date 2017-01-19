@@ -1,4 +1,4 @@
-package winning.mytakeouttest;
+package winning.mytakeout;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import winning.mytakeouttest.R;
 import winning.mytakeouttest.databinding.ActivityMainBinding;
-import winning.mytakeouttest.ui.base.BaseActivity;
-import winning.mytakeouttest.ui.fragments.HomeFragment;
-import winning.mytakeouttest.ui.fragments.MoreFragment;
-import winning.mytakeouttest.ui.fragments.OrderFragment;
-import winning.mytakeouttest.ui.fragments.UserFragment;
+import winning.mytakeout.ui.base.BaseActivity;
+import winning.mytakeout.ui.fragments.HomeFragment;
+import winning.mytakeout.ui.fragments.MoreFragment;
+import winning.mytakeout.ui.fragments.OrderFragment;
+import winning.mytakeout.ui.fragments.UserFragment;
 
 /**
  * 主界面Activity

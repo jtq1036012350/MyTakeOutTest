@@ -1,4 +1,4 @@
-package winning.mytakeouttest.utils;
+package winning.mytakeout.utils;
 
 import android.app.Activity;
 import android.content.Context;

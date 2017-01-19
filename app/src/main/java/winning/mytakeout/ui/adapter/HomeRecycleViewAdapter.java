@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.adapter;
+package winning.mytakeout.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

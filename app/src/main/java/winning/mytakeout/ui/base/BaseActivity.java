@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.base;
+package winning.mytakeout.ui.base;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 
 import winning.mytakeouttest.R;
-import winning.mytakeouttest.utils.ConstantUtil;
 
 /**
  * 父类actvity
@@ -78,7 +77,7 @@ public class BaseActivity extends AppCompatActivity {
         if (bundle != null) {
             intent.putExtras(bundle);
         }
-        startActivityForResult(intent, ConstantUtil.FORRESULT);
+        startActivityForResult(intent, Constant.FORRESULT);
         mActivity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
     }
 
@@ -90,7 +89,7 @@ public class BaseActivity extends AppCompatActivity {
         if (bundle != null) {
             intent.putExtras(bundle);
         }
-        startActivityForResult(intent, ConstantUtil.FORRESULT);
+        startActivityForResult(intent, Constant.FORRESULT);
         mActivity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
     }
 
@@ -98,7 +97,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (resultCode) {
-            case ConstantUtil.FORRESULT:
+            case Constant.FORRESULT:
                 forResultCallBack.forResult(data);
                 break;
         }

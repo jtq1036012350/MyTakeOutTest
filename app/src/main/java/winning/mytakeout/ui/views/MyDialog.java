@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.views;
+package winning.mytakeout.ui.views;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Dialog;

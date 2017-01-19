@@ -1,4 +1,4 @@
-package winning.mytakeouttest.ui.fragments;
+package winning.mytakeout.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,20 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import winning.mytakeout.ui.base.BaseFragment;
 import winning.mytakeouttest.R;
-import winning.mytakeouttest.ui.base.BaseFragment;
 
 
 /**
- * Description: 订单
+ * Description: 更多
  * Author: Jiang
  * Date:   2017/1/17
  */
-public class OrderFragment extends BaseFragment {
+public class MoreFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_order, null);
+        View view = View.inflate(getActivity(), R.layout.fragment_more, null);
 
         return view;
     }

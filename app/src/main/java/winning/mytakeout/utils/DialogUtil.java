@@ -1,4 +1,4 @@
-package winning.mytakeouttest.utils;
+package winning.mytakeout.utils;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import winning.mytakeouttest.R;
-import winning.mytakeouttest.ui.views.MyDialog;
+import winning.mytakeout.ui.views.MyDialog;
 
 
 public class DialogUtil {
