@@ -1,7 +1,5 @@
 package winning.mytakeout.presenter.fragment;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -9,8 +7,6 @@ import winning.mytakeout.model.net.bean.HomeInfo;
 import winning.mytakeout.model.net.bean.ResponseInfo;
 import winning.mytakeout.presenter.BasePresenter;
 import winning.mytakeout.ui.fragments.HomeFragment;
-
-import static android.R.attr.data;
 
 
 /**
@@ -37,7 +33,7 @@ public class HomeFragmentPresenter extends BasePresenter {
         Gson gson = new Gson();
         HomeInfo info = gson.fromJson(data,HomeInfo.class);
 
-        homeFragment.getAdapter().success(info);
+        homeFragment.getAdapter().setData(info);
     }
 
     //获取数据：
