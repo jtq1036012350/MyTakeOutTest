@@ -6,21 +6,21 @@ package winning.mytakeout.utils;
 public interface Constant {
     // http://localhost:8080/   TakeoutService    /login?username="itheima"&password="bj"
 
-    String BASEURL="http://192.168.10.19:8080/";
+    String BASEURL = "http://192.168.10.19:8080/";
     // 登陆
-    String LOGIN="TakeoutService/login";
+    String LOGIN = "TakeoutService/login";
     // http://localhost:8080/TakeoutService/home
-    String HOME="TakeoutService/home";
+    String HOME = "TakeoutService/home";
     // http://localhost:8080/TakeoutService/goods?sellerId=1
     String GOODS = "TakeoutService/goods";
     //    http://localhost:8080/TakeoutService/address?userId=2163&&&&&&
-    String ADDRESS="TakeoutService/address";
+    String ADDRESS = "TakeoutService/address";
 
     String ORDER = "TakeoutService/order";
-    String PAY="TakeoutService/pay";
+    String PAY = "TakeoutService/pay";
 
     // 短信登陆的分类值
-    int LOGIN_TYPE_SMS=2;
+    int LOGIN_TYPE_SMS = 2;
 
     public static final int FORRESULT = 100;
 

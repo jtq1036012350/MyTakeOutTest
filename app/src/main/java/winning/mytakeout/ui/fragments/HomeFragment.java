@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import winning.mytakeout.presenter.fragment.HomeFragmentPresenter;
 import winning.mytakeout.ui.adapter.HomeRecycleViewAdapter;
 import winning.mytakeout.ui.base.BaseFragment;
 import winning.mytakeout.utils.LogUtil;
@@ -31,6 +32,7 @@ public class HomeFragment extends BaseFragment {
     //颜色的计算器
     private ArgbEvaluator argbEvaluator;
 
+    private HomeFragmentPresenter homeFragmentPresenter = new HomeFragmentPresenter();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class HomeFragment extends BaseFragment {
         binding.homeRecycleview.setAdapter(new HomeRecycleViewAdapter());
         binding.homeRecycleview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-
+        homeFragmentPresenter.getData();
         //RecycleView的滑动监听(用来处理顶部栏的透明度)
         binding.homeRecycleview.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

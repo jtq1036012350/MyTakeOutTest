@@ -6,7 +6,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import winning.mytakeout.model.DBHelper;
 import winning.mytakeout.model.net.bean.ResponseInfo;
 import winning.mytakeout.presenter.api.ResponseInfoAPI;
 import winning.mytakeout.utils.Constant;
@@ -20,7 +19,7 @@ public abstract class BasePresenter {
     protected static ResponseInfoAPI responseInfoAPI;
     // 数据库
     // 网络
-    protected DBHelper helper;
+//    protected DBHelper helper;
 
 
     public BasePresenter() {
@@ -42,7 +41,7 @@ public abstract class BasePresenter {
             responseInfoAPI = retrofit.create(ResponseInfoAPI.class);
         }
 
-        helper=DBHelper.getInstance();
+//        helper=DBHelper.getInstance();
 
     }
 
