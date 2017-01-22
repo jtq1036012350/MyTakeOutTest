@@ -71,7 +71,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        homeRecycleViewAdapter = new HomeRecycleViewAdapter();
+        homeRecycleViewAdapter = new HomeRecycleViewAdapter(this);
         binding.homeRecycleview.setAdapter(homeRecycleViewAdapter);
         binding.homeRecycleview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 

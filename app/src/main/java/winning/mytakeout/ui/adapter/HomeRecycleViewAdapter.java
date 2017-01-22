@@ -1,5 +1,6 @@
 package winning.mytakeout.ui.adapter;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +9,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.squareup.picasso.Picasso;
 
 import winning.mytakeout.MyApplication;
+import winning.mytakeout.SellerDetailActivity;
 import winning.mytakeout.model.net.bean.Head;
 import winning.mytakeout.model.net.bean.HomeInfo;
 import winning.mytakeout.model.net.bean.HomeItem;
 import winning.mytakeout.model.net.bean.Promotion;
+import winning.mytakeout.model.net.bean.Seller;
+import winning.mytakeout.ui.fragments.HomeFragment;
+import winning.mytakeout.utils.ToastUtil;
 import winning.mytakeouttest.R;
 
 /**
@@ -31,6 +37,12 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private final int TYPE_HEAD = 0;//头布局的展示
     private final int TYPE_SELLER = 1;//卖家列表的展示
     private final int TYPE_RECOMMEND = 2;//推荐列表的展示
+
+    private HomeFragment fragment;
+
+    public HomeRecycleViewAdapter(HomeFragment fragment) {
+        this.fragment = fragment;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -71,7 +83,7 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 ((HeadViewHolder) holder).setData(data.head);
                 break;
             case TYPE_SELLER:
-                ((SellerViewHolder) holder).setData(data.body.get(position - 1));
+                ((SellerViewHolder) holder).setData(data.body.get(position - 1).seller);
                 break;
             case TYPE_RECOMMEND:
                 ((RecommandViewHolder) holder).setData(data.body.get(position - 1));
@@ -112,10 +124,16 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             //顶部的轮播图
             slider.removeAllSliders();
             if (data != null && data.promotionList.size() > 0) {
-                for (Promotion temp : data.promotionList) {
+                for (final Promotion temp : data.promotionList) {
                     TextSliderView textSliderView = new TextSliderView(MyApplication.getContext());
                     textSliderView.image(temp.pic);
                     textSliderView.description(temp.info);
+                    textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                        @Override
+                        public void onSliderClick(BaseSliderView slider) {
+                            ToastUtil.showText(MyApplication.getContext(), temp.info);
+                        }
+                    });
                     slider.addSlider(textSliderView);
                 }
             }
@@ -141,17 +159,29 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     //卖家布局
     class SellerViewHolder extends RecyclerView.ViewHolder {
         TextView tv_title = null;
-        private HomeItem data;
+        private Seller data;
 
         public SellerViewHolder(View itemView) {
             super(itemView);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+
         }
 
-        public void setData(HomeItem data) {
+        public void setData(final Seller data) {
             this.data = data;
-            tv_title.setText(data.seller.name);
+            tv_title.setText(data.name);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("seller_id", data.id + "");
+                    bundle.putString("name", data.name);
+                    fragment.startMyActivity(SellerDetailActivity.class, bundle);
+                }
+            });
+
         }
+
     }
 
     //推荐布局
