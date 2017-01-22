@@ -7,6 +7,7 @@ import winning.mytakeout.model.net.bean.HomeInfo;
 import winning.mytakeout.model.net.bean.ResponseInfo;
 import winning.mytakeout.presenter.BasePresenter;
 import winning.mytakeout.ui.fragments.HomeFragment;
+import winning.mytakeout.utils.LogUtil;
 
 
 /**
@@ -32,7 +33,7 @@ public class HomeFragmentPresenter extends BasePresenter {
     protected void parserData(String data) {
         Gson gson = new Gson();
         HomeInfo info = gson.fromJson(data,HomeInfo.class);
-
+        LogUtil.d("internetInfo",data);
         homeFragment.getAdapter().setData(info);
     }
 

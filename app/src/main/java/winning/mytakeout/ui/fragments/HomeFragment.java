@@ -47,8 +47,7 @@ public class HomeFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DaggerHomeFragmentComponent.Builder builder = DaggerHomeFragmentComponent
-                .builder();
+        DaggerHomeFragmentComponent.Builder builder = DaggerHomeFragmentComponent.builder();
         builder.homeFragmentModule(new HomeFragmentModule(this));
         HomeFragmentComponent component = builder.build();
         component.in(this);

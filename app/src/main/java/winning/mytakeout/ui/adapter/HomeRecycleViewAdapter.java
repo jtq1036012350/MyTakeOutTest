@@ -5,10 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
 import winning.mytakeout.MyApplication;
 import winning.mytakeout.model.net.bean.Head;
 import winning.mytakeout.model.net.bean.HomeInfo;
 import winning.mytakeout.model.net.bean.HomeItem;
+import winning.mytakeout.model.net.bean.Promotion;
 import winning.mytakeouttest.R;
 
 /**
@@ -91,13 +95,27 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     //头布局
     class HeadViewHolder extends RecyclerView.ViewHolder {
         private Head data;
+        private SliderLayout slider;
 
         public HeadViewHolder(View itemView) {
             super(itemView);
+            slider = (SliderLayout) itemView.findViewById(R.id.slider);
         }
 
         public void setData(Head data) {
             this.data = data;
+            //顶部的轮播图
+            slider.removeAllSliders();
+            if (data != null && data.promotionList.size() > 0) {
+                for (Promotion temp : data.promotionList) {
+                    TextSliderView textSliderView = new TextSliderView(MyApplication.getContext());
+                    textSliderView.image(temp.pic);
+                    textSliderView.description(temp.info);
+                    slider.addSlider(textSliderView);
+                }
+            }
+            //下面的分类图表
+
         }
     }
 

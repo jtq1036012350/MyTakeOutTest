@@ -54,6 +54,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     // 添加OrmLite依赖
     compile 'com.j256.ormlite:ormlite-android:5.0'
-    
+
     testCompile 'junit:junit:4.12'
 }
