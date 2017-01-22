@@ -3,10 +3,13 @@ package winning.mytakeout.ui.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.squareup.picasso.Picasso;
 
 import winning.mytakeout.MyApplication;
 import winning.mytakeout.model.net.bean.Head;
@@ -96,10 +99,12 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     class HeadViewHolder extends RecyclerView.ViewHolder {
         private Head data;
         private SliderLayout slider;
+        private LinearLayout catetory_container;
 
         public HeadViewHolder(View itemView) {
             super(itemView);
             slider = (SliderLayout) itemView.findViewById(R.id.slider);
+            catetory_container = (LinearLayout) itemView.findViewById(R.id.catetory_container);
         }
 
         public void setData(Head data) {
@@ -115,7 +120,21 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 }
             }
             //下面的分类图表
-
+            if (data != null && data.categorieList.size() > 0) {
+                View view = null;
+                for (int i = 0; i < data.categorieList.size(); i++) {
+                    if (i % 2 == 0) {
+                        view = View.inflate(MyApplication.getContext(), R.layout.item_home_head_category, null);
+                        Picasso.with(MyApplication.getContext()).load(data.categorieList.get(i).pic).into((ImageView) view.findViewById(R.id.top_iv));
+                        ((TextView) view.findViewById(R.id.top_tv)).setText(data.categorieList.get(i).name);
+                        catetory_container.addView(view);
+                    }
+                    if (i % 2 != 0) {
+                        Picasso.with(MyApplication.getContext()).load(data.categorieList.get(i).pic).into((ImageView) view.findViewById(R.id.bottom_iv));
+                        ((TextView) view.findViewById(R.id.bottom_tv)).setText(data.categorieList.get(i).name);
+                    }
+                }
+            }
         }
     }
 
