@@ -27,6 +27,7 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemViewType(int position) {
+        //这里根据条目位置返回当前的类型
         int type = -1;
         if (position == 0) {
             type = TYPE_HEAD;
@@ -56,6 +57,7 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        //由于木有相关的viewType参数，只能通过方法来获取了
         int viewType = getItemViewType(position);
         switch (viewType) {
             case TYPE_HEAD:
