@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import winning.mytakeout.MyApplication;
 import winning.mytakeout.ui.base.BaseFragment;
+import winning.mytakeout.utils.LogUtil;
 import winning.mytakeouttest.R;
 import winning.mytakeouttest.databinding.FragmentVpGoodsBinding;
 
@@ -32,6 +34,10 @@ public class GoodsFragment extends BaseFragment {
     private FragmentVpGoodsBinding binding;
 
     private int selectedPosition = 0;
+
+    private MyLeftAdapter myLeftAdapter;
+
+    private boolean isScroll = false;
 
     class Data {
         String info;
@@ -84,17 +90,45 @@ public class GoodsFragment extends BaseFragment {
 //        View view = View.inflate(getActivity(), R.layout.fragment_vp_goods, null);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_vp_goods, container, false);
         setData();
-        final MyLeftAdapter myLeftAdapter = new MyLeftAdapter();
+        myLeftAdapter = new MyLeftAdapter();
+        //右边的Adapter
         binding.shl.setAdapter(new MyGroupAdapter());
+
+        binding.shl.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                isScroll = true;
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (isScroll) {
+                    myLeftAdapter.setMySelection(datas.get(firstVisibleItem).headIndex);
+
+                    //下面来处理自动滚动的情况
+                    int firstLviIndex = binding.lv.getFirstVisiblePosition();
+                    int lastLviIndex = binding.lv.getLastVisiblePosition();
+
+                    LogUtil.d( "position",firstLviIndex + ",,,,,,"+lastLviIndex+",,,,"+datas.get(firstLviIndex).headIndex+",,,,"+(datas.get(firstLviIndex).headIndex>=lastLviIndex));
+
+
+                    if(datas.get(firstVisibleItem).headIndex>=lastLviIndex||datas.get(firstVisibleItem).headIndex<=firstLviIndex){
+                        binding.lv.setSelection(datas.get(firstVisibleItem).headIndex);
+                    }
+                }
+            }
+        });
+
+        //左边的Adapter
         binding.lv.setAdapter(myLeftAdapter);
 
         binding.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedPosition = position;
-                binding.lv.setSelection(position);
-                myLeftAdapter.notifyChange();
+                isScroll = false;
                 binding.shl.setSelection(heads.get(position).groupFirstIndex);
+                isScroll = false;
+                myLeftAdapter.setMySelection(position);
             }
         });
         return binding.getRoot();
@@ -107,7 +141,13 @@ public class GoodsFragment extends BaseFragment {
 
     class MyLeftAdapter extends BaseAdapter {
 
-        public void notifyChange() {
+        private int selectPos = 0;
+
+        public void setMySelection(int selectPos) {
+            if (this.selectPos == selectPos) {
+                return;
+            }
+            this.selectPos = selectPos;
             notifyDataSetChanged();
         }
 
@@ -137,7 +177,7 @@ public class GoodsFragment extends BaseFragment {
             tv.setTextSize(16);
             tv.setGravity(Gravity.CENTER);
 
-            if (position == selectedPosition) {
+            if (position == selectPos) {
                 tv.setBackgroundColor(Color.BLUE);
             } else {
                 tv.setBackgroundColor(Color.WHITE);
@@ -188,6 +228,9 @@ public class GoodsFragment extends BaseFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             TextView tv = new TextView(MyApplication.getContext());
             tv.setText("子布局");
+            tv.setLayoutParams(new ListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80));
+
+            tv.setTextSize(10);
             tv.setBackgroundColor(Color.GRAY);
             tv.setText(datas.get(position).info);
             return tv;
