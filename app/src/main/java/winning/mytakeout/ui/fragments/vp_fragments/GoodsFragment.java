@@ -109,10 +109,10 @@ public class GoodsFragment extends BaseFragment {
                     int firstLviIndex = binding.lv.getFirstVisiblePosition();
                     int lastLviIndex = binding.lv.getLastVisiblePosition();
 
-                    LogUtil.d( "position",firstLviIndex + ",,,,,,"+lastLviIndex+",,,,"+datas.get(firstLviIndex).headIndex+",,,,"+(datas.get(firstLviIndex).headIndex>=lastLviIndex));
+                    LogUtil.d("position", firstLviIndex + ",,,,,," + lastLviIndex + ",,,," + datas.get(firstLviIndex).headIndex + ",,,," + (datas.get(firstLviIndex).headIndex >= lastLviIndex));
 
 
-                    if(datas.get(firstVisibleItem).headIndex>=lastLviIndex||datas.get(firstVisibleItem).headIndex<=firstLviIndex){
+                    if (datas.get(firstVisibleItem).headIndex >= lastLviIndex || datas.get(firstVisibleItem).headIndex <= firstLviIndex) {
                         binding.lv.setSelection(datas.get(firstVisibleItem).headIndex);
                     }
                 }
