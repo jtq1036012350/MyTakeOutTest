@@ -3,7 +3,7 @@ package winning.mytakeout.utils;
 /**
  * Created by Teacher on 2016/9/2.
  */
-public interface Constant {
+public interface ConstantUtil {
     // http://localhost:8080/   TakeoutService    /login?username="itheima"&password="bj"
 
     String BASEURL = "http://192.168.10.19:8080/";

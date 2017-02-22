@@ -8,7 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import winning.mytakeout.model.net.bean.ResponseInfo;
 import winning.mytakeout.presenter.api.ResponseInfoAPI;
-import winning.mytakeout.utils.Constant;
+import winning.mytakeout.utils.ConstantUtil;
 import winning.mytakeout.utils.ErrorInfo;
 
 /**
@@ -26,7 +26,7 @@ public abstract class BasePresenter {
     public BasePresenter() {
 
 /*        Retrofit.Builder builder = new Retrofit.Builder();
-        builder.baseUrl(Constant.BASEURL);
+        builder.baseUrl(ConstantUtil.BASEURL);
         builder.addConverterFactory(GsonConverterFactory.create());// Gson解析
 
         Retrofit retrofit = builder.build();*/
@@ -35,7 +35,7 @@ public abstract class BasePresenter {
         // 第一次初始化完成后，所有子类都可以使用
         if (responseInfoAPI == null) {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Constant.BASEURL)
+                    .baseUrl(ConstantUtil.BASEURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

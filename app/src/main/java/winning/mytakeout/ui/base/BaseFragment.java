@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import winning.mytakeout.utils.Constant;
+import winning.mytakeout.utils.ConstantUtil;
 import winning.mytakeouttest.R;
 
 
@@ -57,7 +57,7 @@ public class BaseFragment extends Fragment {
         if (bundle != null) {
             intent.putExtras(bundle);
         }
-        startActivityForResult(intent, Constant.FORRESULT);
+        startActivityForResult(intent, ConstantUtil.FORRESULT);
         mActivity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
     }
 
@@ -69,7 +69,7 @@ public class BaseFragment extends Fragment {
         if (bundle != null) {
             intent.putExtras(bundle);
         }
-        startActivityForResult(intent, Constant.FORRESULT);
+        startActivityForResult(intent, ConstantUtil.FORRESULT);
         mActivity.overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
     }
 
@@ -77,7 +77,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (resultCode) {
-            case Constant.FORRESULT:
+            case ConstantUtil.FORRESULT:
                 forResultCallBack.forResult(data);
                 break;
         }
